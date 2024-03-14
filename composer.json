@@ -1,0 +1,48 @@
+{
+  "name": "mvenghaus/magento2-widget-directive",
+  "description": "Simple parser & build for Magento 2 widget directives outside of the Magento environment.",
+  "keywords": [
+    "magento",
+    "magento2",
+    "widget",
+    "directive",
+    "reader",
+    "parser",
+    "builder"
+  ],
+  "homepage": "https://github.com/mvenghaus/magento2-widget-directive",
+  "support": {
+    "issues": "https://github.com/mvenghaus/magento2-widget-directive/issues",
+    "source": "https://github.com/mvenghaus/magento2-widget-directive"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marcus Venghaus",
+      "email": "marcus.venghaus@inklammern.de",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "pestphp/pest": "^2.34"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mvenghaus\\Magento2WidgetDirective\\": "src"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/pest"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
