@@ -1,6 +1,6 @@
 # Magento 2 - Widget Directive
 
-Simple parser & build for Magento 2 widget directives outside of the Magento environment.
+Simple parser & builder for Magento 2 widget directives outside of the Magento environment.
 
 ## Installation
 
