@@ -37,7 +37,7 @@ foreach ($widgets as $widget) {
 ## Building a directive
 
 ```php
-$widgetBuilder = new WidgetBuilder();
+$widgetBuilder = new \Mvenghaus\Magento2WidgetDirective\WidgetBuilder();
 
 $result = $widgetBuilder->build(
     new WidgetData(
@@ -48,6 +48,8 @@ $result = $widgetBuilder->build(
         ]
     )
 );
+
+// -> {{widget type="TestWidget\Widget" param1="foo" param2="bar"}}
 ```
 
 ## Run Tests
