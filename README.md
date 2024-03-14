@@ -24,8 +24,8 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
 EOF;
 
 
-$widgetReader = new \Mvenghaus\Magento2WidgetDirective\WidgetParser();
-$widgets = $widgetReader->parse($content);
+$widgetParser = new \Mvenghaus\Magento2WidgetDirective\WidgetParser();
+$widgets = $widgetParser->parse($content);
 
 /** @var \Mvenghaus\Magento2WidgetDirective\Data\WidgetData $widget */
 foreach ($widgets as $widget) {
