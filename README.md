@@ -7,7 +7,7 @@ Simple parser & build for Magento 2 widget directives outside of the Magento env
 Install the package via composer:
 
 ```bash
-composer require mvenghaus/magento2-widget-io:"^1.0"
+composer require mvenghaus/magento2-widget-directive:"^1.0"
 ```
 
 # Usage
