@@ -25,7 +25,7 @@ class WidgetParser
 
         $widgets = [];
         foreach ($directives as $directive) {
-            preg_match_all('/ (.*?)="([^"]+)/', $directive, $results);
+            preg_match_all('/ (.*?)="([^"]*)/', $directive, $results);
 
             $paramKeys = $results[1] ?? [];
             $paramValues = $results[2] ?? [];
