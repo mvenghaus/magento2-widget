@@ -6,6 +6,7 @@ namespace Mvenghaus\Magento2WidgetDirective;
 
 use Mvenghaus\Magento2WidgetDirective\Data\WidgetData;
 use Mvenghaus\Magento2WidgetDirective\Exceptions\WidgetParseException;
+use Mvenghaus\Magento2WidgetDirective\Tokenizer\ParameterTokenizer;
 
 class WidgetParser
 {
@@ -25,30 +26,16 @@ class WidgetParser
 
         $widgets = [];
         foreach ($directives as $directive) {
-            preg_match_all('/ (.*?)="([^"]*)/', $directive, $results);
+            $tokenizer = new ParameterTokenizer();
+            $tokenizer->setString(html_entity_decode($directive));
+            $properties = $tokenizer->tokenize();
 
-            $paramKeys = $results[1] ?? [];
-            $paramValues = $results[2] ?? [];
-
-            $type = null;
-            $properties = [];
-            foreach ($paramKeys as $index => $paramKey) {
-                $paramValue = $paramValues[$index] ?? null;
-                if ($paramValue === null) {
-                    throw new WidgetParseException($directive);
-                }
-
-                if ($paramKey === 'type') {
-                    $type = $paramValue;
-                    continue;
-                }
-
-                $properties[$paramKey] = $paramValue;
-            }
-
+            $type = $properties['type'] ?? null;
             if ($type === null) {
                 throw new WidgetParseException($directive);
             }
+
+            unset($properties['type']);
 
             $widgets[] = new WidgetData(
                 type: $type,

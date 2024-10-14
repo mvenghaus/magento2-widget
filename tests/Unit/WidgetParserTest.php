@@ -6,7 +6,6 @@ use Mvenghaus\Magento2WidgetDirective\Data\WidgetData;
 use Mvenghaus\Magento2WidgetDirective\WidgetParser;
 
 test('can parse widgets', function () {
-
     $widgetParser = new WidgetParser();
 
     $widgets = $widgetParser->parse(<<<EOF
@@ -16,11 +15,13 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
 {{widget type="TestWidget\Widget2" param1="foo2" param2="bar2"}}
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
 {{widget type="TestWidget\Widget3" param1="" param2="bar3"}}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+{{widget%20type="TestWidget\Widget4"%20param1="foo4"}}
 EOF
     );
 
     expect()
-        ->and(count($widgets))->toBe(3)
+        ->and(count($widgets))->toBe(4)
         ->and($widgets[0])->toBeObject(WidgetData::class)
         ->and($widgets[0]->type)->toBe('TestWidget\\Widget')
         ->and($widgets[0]->properties)->toMatchArray([
@@ -38,7 +39,10 @@ EOF
         ->and($widgets[2]->properties)->toMatchArray([
             'param1' => '',
             'param2' => 'bar3'
+        ])
+        ->and($widgets[3])->toBeObject(WidgetData::class)
+        ->and($widgets[3]->type)->toBe('TestWidget\\Widget4')
+        ->and($widgets[3]->properties)->toMatchArray([
+            'param1' => 'foo4',
         ]);
-
-
 });
